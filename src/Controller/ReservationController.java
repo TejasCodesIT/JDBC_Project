@@ -1,6 +1,7 @@
 package Controller;
 
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.Scanner;
 
 import dao.ReservationCrud;
@@ -8,7 +9,7 @@ import dto.Customer;
 
 public class ReservationController {
 	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
 		
 		
 		ReservationCrud crud = new ReservationCrud();
@@ -72,10 +73,14 @@ public class ReservationController {
 				
 				
 			case 5:
+				crud.deleteById(sc);
 				
 				break;
 			case 6:
 				System.err.println("Exit Successfully...!");
+				
+				exits();
+				
 				choice=-1;
 				
 				break;
@@ -86,6 +91,22 @@ public class ReservationController {
 			}
 		}
 		
+	}
+	
+	private static  void exits() throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		int i= 5;
+		
+		while(i>=0) {
+			System.out.print(". ");
+			Thread.sleep(600);
+			i--;
+		}
+		
+		System.out.println(" ");
+		System.out.println("Thank You for using Reservation System..!!!");
+
 	}
 
 }

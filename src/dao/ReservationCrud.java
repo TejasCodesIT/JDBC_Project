@@ -1,6 +1,6 @@
 package dao;
 
-import java.security.interfaces.RSAKey;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -175,9 +175,48 @@ public class ReservationCrud {
 			System.out.println("No such id found in database ");
 		}
 		
-//		String sql = "update table reservation ";
-//		
-//		connection.prepareStatement(null)
+		
+
+	}
+	
+	public void deleteById(Scanner sc ) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		Connection connection=null;
+		
+		try {
+			connection=getConnection();
+			
+		}
+		catch(ClassNotFoundException e){
+			System.out.println("Class not found in delete by id");
+			e.printStackTrace();
+			
+		}
+		catch(SQLException e) {
+			
+			System.out.println("Sql Exception found in delete by id method..");
+			e.printStackTrace();
+			
+		}
+		
+		String sql = "delete from reservations where reservation_id=?" ;
+		
+		PreparedStatement preparedStatement=connection.prepareStatement(sql);
+		
+		System.out.println("Please Enter your ID TO DELETE Guest form database ...");
+		int id = sc.nextInt();
+		
+		preparedStatement.setInt(1, id);
+		
+		int result = preparedStatement.executeUpdate();
+		
+		if(result>0) System.out.println("Delter Successfully...!");
+		else System.err.println("Data is Not deleted from database...1");
+		
+		
+		preparedStatement.close();
+		connection.close();
 		
 
 	}
