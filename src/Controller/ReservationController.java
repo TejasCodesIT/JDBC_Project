@@ -15,12 +15,14 @@ public class ReservationController {
 		Customer customer = new Customer();
 		Scanner sc = new Scanner(System.in);
 		int choice=1;
-		
+		System.out.println("Please Enter your Choice between 0 to 5 :-");
 		while(choice>0) {
-			System.out.println("Please Enter your Choice between 0 to 5 :-");
+			System.err.println("******************************************************************");
+			
+		
 			
 			System.out.println("1. Reservation a room ");
-			System.out.println("2. View Reservation ");
+			System.out.println("2. View Reservations ");
 			System.out.println("3. Get Room Nummber");
 			System.out.println("4. Update Reservation ");
 			System.out.println("5. Delete Reservation ");
@@ -54,9 +56,21 @@ public class ReservationController {
 				
 				break;
 			case 3:
+				System.out.println("Enter Id of Guest");
+				int id= sc.nextInt();
+				
+				crud.getRoomNumberById(sc,id);
 				break;
+				
+				
+				
 			case 4:
+				
+				crud.updateReservation(sc, customer);
 				break;
+				
+				
+				
 			case 5:
 				
 				break;
